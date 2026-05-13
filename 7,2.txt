@@ -1,0 +1,63 @@
+
+
+✅ Пункт 1. Семантические теги HTML5
+Тег	Где используется	Пример
+<header>	Все 7 страниц	index.html:1 (шапка сайта)
+<footer>	Все 7 страниц	index.html (подвал)
+<nav>	Главное меню, хлебные крошки, пагинация	index.html, catalog.html, blog.html
+<section>	Каждая секция на всех страницах	index.html (хиты продаж, преимущества, блог)
+<article>	Карточки товаров, статьи блога, отзывы, баннеры акций	blog.html, product.html, promo.html
+<aside>	Боковая панель фильтров, галерея товара, контакты	catalog.html, product.html, contacts.html
+<main>	Основной контент	catalog.html, blog.html, support.html
+✅ Пункт 1. Элементы уровня текста
+Тег	Где используется	Пример
+<em>	Выделение важных слов курсивом	index.html: "камера 48 МП", blog.html: "Процессор, камера, экран"
+<strong>	Жирное выделение важного	index.html: "A17 Pro", product.html: "342 отзыва"
+<small>	Второстепенная информация	index.html: курьером или в пункт выдачи, catalog.html: сортировка
+<mark>	Выделение цветом (акции, скидки)	index.html: НОВИНКА, АКЦИЯ, promo.html: СУПЕРЦЕНА
+✅ Пункт 2. Страница обратной связи (support.html)
+Требование ТЗ	Выполнение
+Имя пользователя	<input type="text" name="userName" placeholder="Введите ваше имя" required minlength="2"> ✅
+Обязательное поле	required ✅
+minlength="2"	minlength="2" ✅
+Email	<input type="email" name="userEmail" placeholder="email@example.com" required> ✅
+Формат email	type="email" — браузер сам проверит формат (что-то@что-то.что-то) ✅
+Текст сообщения	<textarea name="userMessage" placeholder="Опишите ваш вопрос или проблему..." rows="6" required></textarea> ✅
+Многострочное	<textarea> ✅
+Кнопка «Отправить»	<button type="submit" class="btn btn--primary btn--large btn--full">📤 Отправить</button> ✅
+Плейсхолдеры	Есть во всех полях ✅
+Отправка не реализуется	e.preventDefault() + уведомление ✅
+✅ Пункт 3. Видео/аудио со стороннего ресурса
+Требование	Выполнение
+Видео с YouTube	blog.html: <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" ...></iframe> ✅
+Статья с видео	Выделена оранжевой рамкой blog-card--featured ✅
+Атрибуты	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ✅
+🔍 Что ещё есть сверх требований:
+Адаптивная вёрстка на всех страницах
+
+Слайдер на JavaScript
+
+Корзина, избранное, сравнение
+
+Личный кабинет с регистрацией
+
+Чат с консультантом Саней
+
+Промокоды и оформление заказа
+
+6 промокодов в системе
+
+📋 Полный список файлов:
+text
+boar-sanya/
+├── index.html          ← семантические теги ✅
+├── catalog.html        ← <aside>, <section>, <main> ✅
+├── product.html        ← <article>, <figure> ✅
+├── promo.html          ← <article>, <mark> ✅
+├── blog.html           ← <article>, <iframe> YouTube ✅
+├── contacts.html       ← <aside>, <section> ✅
+├── support.html        ← форма с minlength, email, textarea, button ✅
+├── css/
+│   └── style.css
+├── js/
+│   └── script.js

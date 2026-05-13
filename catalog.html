@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог — Boar&Sanя</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/stule.css">
+</head>
+<body>
+    <!-- СЕМАНТИЧЕСКАЯ ШАПКА -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="logo">
+                <span class="logo__boar">BOAR</span>&<span class="logo__sanya">SANя</span>
+            </a>
+            <div class="header__search">
+                <input type="text" placeholder="Поиск товаров..." class="search-input">
+                <button class="search-btn">🔍</button>
+            </div>
+            <div class="header__contacts">
+                <a href="tel:+78001234567" class="header__phone"><strong>8 (800) 123-45-67</strong></a>
+                <small class="header__callback">Обратный звонок</small>
+            </div>
+            <div class="header__icons">
+                <a href="#" class="icon-link" title="Избранное">❤️<span class="badge">3</span></a>
+                <a href="#" class="icon-link" title="Сравнение">⚖️<span class="badge">2</span></a>
+                <a href="#" class="icon-link" title="Корзина" id="cartIcon">🛒<span class="badge" id="cartCount">0</span></a>
+                <a href="#" class="icon-link profile-icon" title="Войти">👤</a>
+            </div>
+            <button class="burger" id="burgerBtn">☰</button>
+        </div>
+        
+        <nav class="nav" id="mainNav">
+            <div class="container">
+                <ul class="nav__list">
+                    <li class="nav__item nav__item--catalog">
+                        <a href="catalog.html" class="active">📦 Каталог</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu__col"><h4>Смартфоны</h4><a href="#">iPhone</a><a href="#">Samsung</a><a href="#">Xiaomi</a></div>
+                            <div class="mega-menu__col"><h4>Ноутбуки</h4><a href="#">Игровые</a><a href="#">Ультрабуки</a></div>
+                            <div class="mega-menu__col"><h4>Бытовая техника</h4><a href="#">Крупная</a><a href="#">Мелкая</a></div>
+                            <div class="mega-menu__col"><h4>Аксессуары</h4><a href="#">Наушники</a><a href="#">Зарядки</a></div>
+                        </div>
+                    </li>
+                    <li class="nav__item"><a href="promo.html">🔥 Акции</a></li>
+                    <li class="nav__item"><a href="blog.html">📝 Блог</a></li>
+                    <li class="nav__item"><a href="contacts.html">🚚 Доставка</a></li>
+                    <li class="nav__item"><a href="contacts.html">📞 Контакты</a></li>
+                    <li class="nav__item"><a href="support.html">💬 Поддержка</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ХЛЕБНЫЕ КРОШКИ -->
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container">
+            <a href="index.html">Главная</a> / <span>Каталог</span>
+        </div>
+    </nav>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main>
+        <section class="catalog section" aria-label="Каталог товаров">
+            <div class="container catalog__layout">
+                <!-- БОКОВАЯ ПАНЕЛЬ ФИЛЬТРОВ (ASIDE) -->
+                <aside class="catalog__sidebar" aria-label="Фильтры">
+                    <div class="filter-block">
+                        <h4 class="filter-block__title">Цена, ₽</h4>
+                        <div class="filter-block__range">
+                            <input type="number" placeholder="от" value="1000" class="range-input">
+                            <span>—</span>
+                            <input type="number" placeholder="до" value="500000" class="range-input">
+                        </div>
+                    </div>
+
+                    <div class="filter-block">
+                        <h4 class="filter-block__title"><strong>Бренд</strong></h4>
+                        <label class="filter-checkbox"><input type="checkbox" checked> Apple</label>
+                        <label class="filter-checkbox"><input type="checkbox" checked> Samsung</label>
+                        <label class="filter-checkbox"><input type="checkbox" checked> Xiaomi</label>
+                        <label class="filter-checkbox"><input type="checkbox"> ASUS</label>
+                        <label class="filter-checkbox"><input type="checkbox"> Lenovo</label>
+                        <label class="filter-checkbox"><input type="checkbox"> HP</label>
+                        <label class="filter-checkbox"><input type="checkbox"> Dyson</label>
+                        <label class="filter-checkbox"><input type="checkbox"> Sony</label>
+                    </div>
+
+                    <div class="filter-block">
+                        <h4 class="filter-block__title"><strong>Категория</strong></h4>
+                        <label class="filter-checkbox"><input type="radio" name="cat" checked> Все товары</label>
+                        <label class="filter-checkbox"><input type="radio" name="cat"> Смартфоны</label>
+                        <label class="filter-checkbox"><input type="radio" name="cat"> Ноутбуки</label>
+                        <label class="filter-checkbox"><input type="radio" name="cat"> Бытовая техника</label>
+                        <label class="filter-checkbox"><input type="radio" name="cat"> Аксессуары</label>
+                        <label class="filter-checkbox"><input type="radio" name="cat"> Гейминг</label>
+                    </div>
+
+                    <button class="btn btn--primary btn--full">Применить фильтры</button>
+                    <button class="btn btn--text btn--full" style="margin-top:6px;">Сбросить</button>
+                </aside>
+
+                <!-- СПИСОК ТОВАРОВ -->
+                <div class="catalog__main">
+                    <div class="catalog__toolbar">
+                        <div class="toolbar__sort">
+                            <label><small>Сортировка:</small></label>
+                            <select>
+                                <option>По популярности</option>
+                                <option>Цена ↑</option>
+                                <option>Цена ↓</option>
+                                <option>Новинки</option>
+                                <option>По названию</option>
+                            </select>
+                        </div>
+                        <div class="toolbar__view">
+                            <button class="view-btn active" data-view="grid" aria-label="Сетка">⊞</button>
+                            <button class="view-btn" data-view="list" aria-label="Список">☰</button>
+                        </div>
+                        <div class="toolbar__count">
+                            <small>Найдено: <strong id="toolbarCount">24 товара</strong></small>
+                        </div>
+                    </div>
+
+                    <!-- СЕТКА ТОВАРОВ -->
+                    <div class="products__grid products__grid--catalog" id="catalogProducts"></div>
+
+                    <!-- ПАГИНАЦИЯ -->
+                    <nav class="pagination" aria-label="Пагинация каталога">
+                        <a href="#" class="pagination__btn active">1</a>
+                        <a href="#" class="pagination__btn">2</a>
+                        <a href="#" class="pagination__btn">3</a>
+                        <a href="#" class="pagination__btn" aria-label="Следующая">→</a>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- СЕМАНТИЧЕСКИЙ ПОДВАЛ -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__col">
+                <a href="index.html" class="logo logo--footer"><span class="logo__boar">BOAR</span>&<span class="logo__sanya">SANя</span></a>
+                <p><small>Техника, которая работает на вас.</small></p>
+                <div class="socials"><a href="#" aria-label="VK">VK</a><a href="#" aria-label="TG">TG</a><a href="#" aria-label="YT">YT</a></div>
+            </div>
+            <nav class="footer__col"><h4>Покупателям</h4><a href="catalog.html">Каталог</a><a href="promo.html">Акции</a><a href="contacts.html">Доставка</a></nav>
+            <nav class="footer__col"><h4>О компании</h4><a href="contacts.html">Контакты</a><a href="blog.html">Блог</a><a href="support.html">Поддержка</a></nav>
+            <div class="footer__col"><h4>Контакты</h4><p><strong>📞 8 (800) 123-45-67</strong></p><p><small>📧 hello@boarsanya.ru</small></p></div>
+        </div>
+        <div class="footer__bottom"><div class="container"><p><small>© 2026 Boar&Sanя</small></p></div></div>
+    </footer>
+
+    <!-- МОДАЛЬНЫЕ ОКНА -->
+    <div class="modal" id="cartModal"><div class="modal__overlay"></div><div class="modal__content"><button class="modal__close">✕</button><h3>🛒 Корзина</h3><div class="cart-items" id="cartItems"></div><div class="promocode-cart"><input type="text" placeholder="Промокод" id="promocodeInput"><button class="btn btn--outline btn-sm" id="applyPromoBtn">Применить</button></div><div class="cart-summary"><div class="cart-summary__row"><span>Сумма:</span><strong id="cartTotal">0 ₽</strong></div><div class="cart-summary__row" style="color:var(--green);"><span>Скидка:</span><strong id="cartDiscount">0 ₽</strong></div><div class="cart-summary__row cart-summary__row--total"><span>Итого:</span><strong id="cartFinal">0 ₽</strong></div></div><button class="btn btn--primary btn--full" style="margin-top:12px;">Оформить заказ</button></div></div>
+    <div class="modal" id="compareModal"><div class="modal__overlay"></div><div class="modal__content modal__content--wide"><button class="modal__close">✕</button><h3>⚖️ Сравнение</h3><div id="compareItems"></div></div></div>
+    <div class="modal" id="favoritesModal"><div class="modal__overlay"></div><div class="modal__content"><button class="modal__close">✕</button><h3>❤️ Избранное</h3><div id="favoritesItems"></div></div></div>
+    <div class="modal" id="profileModal"><div class="modal__overlay"></div><div class="modal__content"><button class="modal__close">✕</button><h3>👤 Личный кабинет</h3><div id="profileContent"></div></div></div>
+    <div class="modal" id="checkoutModal"><div class="modal__overlay"></div><div class="modal__content modal__content--wide"><button class="modal__close">✕</button><h3>📋 Оформление заказа</h3><div class="checkout-layout"><div class="checkout-items" id="checkoutItems"></div></div></div></div>
+    <div class="modal" id="orderSuccessModal"><div class="modal__overlay"></div><div class="modal__content"><button class="modal__close">✕</button><div id="orderDetails"></div></div></div>
+
+    <!-- ЧАТ -->
+    <div class="chat-widget" id="chatWindow"><div class="chat-header"><span>💬 Саня на связи</span><button class="chat-close" id="chatClose">✕</button></div><div class="chat-body" id="chatBody"><div class="chat-message chat-message--bot"><div class="chat-message__bubble">👋 Привет! Я Саня.</div></div></div><div class="chat-input-area"><input type="text" placeholder="Напишите сообщение..." id="chatInput"><button id="chatSend">➤</button></div></div>
+    <button class="chat-toggle" id="chatToggle" title="Чат с Саней">💬</button>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

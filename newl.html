@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Boar&San · Умные формы регистрации, доставки и отзыва</title>
+  <!-- Google Fonts & простые стили под макеты Figma -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (иконки) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f0f2f5;
+      font-family: 'Inter', sans-serif;
+      padding: 3rem 1.5rem;
+      color: #1e293b;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Заголовок секции */
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .section-header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1a2a3a, #2c3e50);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .section-header p {
+      color: #5b6e8c;
+      margin-top: 0.5rem;
+    }
+
+    /* Грид макетов */
+    .forms-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    /* карточка формы (как макет в Figma) */
+    .form-card {
+      flex: 1;
+      min-width: 360px;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+      backdrop-filter: blur(0px);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .form-card:hover {
+      transform: translateY(-4px);
+    }
+    .card-header {
+      background: #ffffff;
+      padding: 1.5rem 1.8rem 0.5rem 1.8rem;
+      border-bottom: 2px solid #eef2ff;
+    }
+    .card-header h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .card-header h2 i {
+      color: #3b82f6;
+      font-size: 1.5rem;
+    }
+    .card-header .step-badge {
+      font-size: 0.75rem;
+      background: #eef2ff;
+      display: inline-block;
+      padding: 0.2rem 0.8rem;
+      border-radius: 50px;
+      margin-top: 0.5rem;
+      color: #1e40af;
+      font-weight: 500;
+    }
+    form {
+      padding: 1.5rem 1.8rem 2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .form-row .form-group {
+      flex: 1;
+    }
+    label {
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    label i {
+      width: 18px;
+      color: #6c86a3;
+    }
+    input, select, textarea {
+      font-family: 'Inter', sans-serif;
+      padding: 0.8rem 1rem;
+      border-radius: 16px;
+      border: 1.5px solid #e2e8f0;
+      background: #fff;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      outline: none;
+      width: 100%;
+    }
+    /* состояния: фокус */
+    input:focus, select:focus, textarea:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+    }
+    /* ошибка */
+    input.error, select.error, textarea.error {
+      border-color: #ef4444;
+      background-color: #fff8f8;
+    }
+    .error-message {
+      font-size: 0.7rem;
+      color: #ef4444;
+      margin-top: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    /* статус валидный (успех) */
+    input.valid, select.valid {
+      border-color: #10b981;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%2310b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>');
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1rem;
+    }
+    /* пароль и надёжность */
+    .password-strength {
+      margin-top: 5px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .strength-bar {
+      height: 5px;
+      flex: 1;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .strength-fill {
+      width: 0%;
+      height: 100%;
+      background: #ef4444;
+      border-radius: 4px;
+      transition: width 0.2s;
+    }
+    .strength-text {
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+    /* чекбокс + согласие */
+    .checkbox-group {
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      margin: 0.5rem 0;
+    }
+    .checkbox-group input {
+      width: 20px;
+      height: 20px;
+      margin: 0;
+    }
+    /* кнопки */
+    .btn-submit {
+      background: #1e293b;
+      color: white;
+      border: none;
+      padding: 1rem;
+      font-weight: 600;
+      border-radius: 40px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-submit:hover {
+      background: #0f172a;
+      transform: scale(0.99);
+    }
+    /* иконка внутрь поля */
+    .input-icon {
+      position: relative;
+    }
+    .input-icon i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+    }
+    .input-icon input {
+      padding-left: 2.5rem;
+    }
+    /* автоматическое форматирование (пример с картой) */
+    small.hint {
+      font-size: 0.7rem;
+      color: #6c86a3;
+    }
+    hr {
+      margin: 0.5rem 0;
+      border: none;
+      border-top: 1px solid #edf2f7;
+    }
+    .coupon-row {
+      background: #f8fafc;
+      border-radius: 20px;
+      padding: 0.8rem;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    @media (max-width: 760px) {
+      .forms-grid {
+        flex-direction: column;
+      }
+      .form-card {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="section-header">
+    <h1><i class="fas fa-pen-ruler"></i> Boar&San · Умные формы</h1>
+    <p>Регистрация + доставка / оплата + отзыв с оценкой | UX-состояния: фокус, ошибка, валидация, автоформат</p>
+  </div>
+
+  <div class="forms-grid">
+    
+    <!-- ФОРМА 1: СОЗДАНИЕ АККАУНТА (регистрация) -->
+    <div class="form-card">
+      <div class="card-header">
+        <h2><i class="fas fa-user-plus"></i> Создать аккаунт</h2>
+        <span class="step-badge">Шаг 1 — Личные данные</span>
+      </div>
+      <form id="registerForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fas fa-user"></i> Фамилия</label>
+            <input type="text" id="lastname" placeholder="Иванов" autocomplete="family-name">
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-user"></i> Имя</label>
+            <input type="text" id="firstname" placeholder="Алексей" autocomplete="given-name">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-lock"></i> Пароль</label>
+          <input type="password" id="password" placeholder="Придумайте пароль">
+          <div class="password-strength">
+            <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+            <span class="strength-text" id="strengthLabel">Надёжность</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-check-circle"></i> Подтверждение пароля</label>
+          <input type="password" id="confirmPwd" placeholder="Повторите пароль">
+          <div class="error-message" id="pwdMatchError" style="display:none;"><i class="fas fa-exclamation-circle"></i> Пароли не совпадают</div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fas fa-calendar-alt"></i> Дата рождения</label>
+            <input type="date" id="birthdate" value="2000-01-01">
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-phone-alt"></i> Телефон</label>
+            <div class="input-icon">
+              <i class="fas fa-phone"></i>
+              <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" class="phone-mask">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-envelope"></i> Электронная почта</label>
+          <input type="email" id="email" placeholder="alex@example.com">
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-city"></i> Город проживания</label>
+          <select id="city">
+            <option value="">Выберите город</option>
+            <option>Москва</option>
+            <option>Санкт-Петербург</option>
+            <option>Новосибирск</option>
+            <option>Екатеринбург</option>
+            <option>Казань</option>
+          </select>
+        </div>
+
+        <div class="checkbox-group form-group">
+          <input type="checkbox" id="consent">
+          <label for="consent">Я согласен на обработку персональных данных и получение рекламных предложений</label>
+        </div>
+
+        <button type="submit" class="btn-submit"><i class="fas fa-arrow-right"></i> Зарегистрироваться и продолжить</button>
+      </form>
+    </div>
+
+    <!-- ФОРМА 2: ДОСТАВКА + ОПЛАТА (банковская карта, способ доставки, адрес, индекс) -->
+    <div class="form-card">
+      <div class="card-header">
+        <h2><i class="fas fa-truck-fast"></i> Доставка и оплата</h2>
+        <span class="step-badge">Шаг 2 — Адрес & карта</span>
+      </div>
+      <form id="deliveryForm">
+        <div class="form-group">
+          <label><i class="fas fa-shipping-fast"></i> Способ доставки</label>
+          <select id="deliveryMethod">
+            <option value="courier">Курьерская доставка — 300 ₽</option>
+            <option value="pickup">Самовывоз из пункта Boar&San (бесплатно)</option>
+            <option value="post">Почта России (150 ₽)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-map-marker-alt"></i> Адрес доставки</label>
+          <input type="text" id="address" placeholder="Улица, дом, квартира/офис">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fas fa-mail-bulk"></i> Почтовый индекс</label>
+            <input type="text" id="zipcode" placeholder="123456" maxlength="6">
+          </div>
+        </div>
+
+        <hr>
+        <div class="form-group">
+          <label><i class="fas fa-credit-card"></i> Номер карты</label>
+          <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" class="card-mask" autocomplete="off">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fas fa-calendar"></i> Срок (MM/YY)</label>
+            <input type="text" id="expiry" placeholder="MM/YY" class="expiry-mask">
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-shield-alt"></i> CVV/CVC</label>
+            <input type="password" id="cvv" placeholder="123" maxlength="4">
+          </div>
+        </div>
+        <!-- бонус: промокод + подписка -->
+        <div class="coupon-row">
+          <i class="fas fa-ticket-alt"></i>
+          <input type="text" id="promocode" placeholder="Промокод (BOAR10 на скидку)">
+          <button type="button" id="applyPromo" style="background:#eef2ff; border:none; border-radius:40px; padding:6px 12px;">Применить</button>
+        </div>
+        <div class="checkbox-group form-group">
+          <input type="checkbox" id="subscribeNews">
+          <label for="subscribeNews">Подписаться на рассылку о бонусах и новинках</label>
+        </div>
+        <button type="submit" class="btn-submit"><i class="fas fa-credit-card"></i> Оплатить и подтвердить заказ</button>
+        <small class="hint"><i class="fas fa-lock"></i> Данные защищены, 3D Secure</small>
+      </form>
+    </div>
+
+    <!-- ФОРМА 3: ОТЗЫВ О ТОВАРЕ / ОБРАТНАЯ СВЯЗЬ -->
+    <div class="form-card">
+      <div class="card-header">
+        <h2><i class="fas fa-star"></i> Ваш отзыв о товаре</h2>
+        <span class="step-badge">Оценка и впечатления</span>
+      </div>
+      <form id="reviewForm">
+        <div class="form-group">
+          <label><i class="fas fa-box-open"></i> Товар/услуга</label>
+          <select id="product">
+            <option>Xphone 14 Pro</option>
+            <option>BoarBook Air</option>
+            <option>SanBuds Pro</option>
+            <option>Другая техника</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-star-half-alt"></i> Оценка (1–5)</label>
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <select id="rating">
+              <option value="5">★★★★★ 5 — Отлично</option>
+              <option value="4">★★★★☆ 4 — Хорошо</option>
+              <option value="3">★★★☆☆ 3 — Средне</option>
+              <option value="2">★★☆☆☆ 2 — Плохо</option>
+              <option value="1">★☆☆☆☆ 1 — Ужасно</option>
+            </select>
+            <i class="fas fa-smile-wink" style="color:#fbbf24;"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-comment-dots"></i> Текст отзыва</label>
+          <textarea rows="3" id="reviewText" placeholder="Напишите, что вам понравилось, а что можно улучшить..."></textarea>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-camera"></i> Фото товара (опционально)</label>
+          <input type="file" accept="image/*">
+          <small class="hint">Добавьте фото, чтобы получить бонус 50 баллов</small>
+        </div>
+        <div class="checkbox-group form-group">
+          <input type="checkbox" id="anonReview">
+          <label for="anonReview">Анонимный отзыв (ник не показывать)</label>
+        </div>
+        <button type="submit" class="btn-submit"><i class="fas fa-pen-fancy"></i> Опубликовать отзыв и получить бонус</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Тосты / уведомления -->
+  <div style="position: fixed; bottom: 20px; right: 20px; z-index: 999; display: flex; flex-direction: column; gap: 8px;" id="toastContainer"></div>
+</div>
+
+<script>
+  // ------------------ UX: Автоматическое форматирование + валидация полей ----------
+  // Маска телефона
+  const phoneInput = document.querySelector('.phone-mask');
+  if(phoneInput) {
+    phoneInput.addEventListener('input', function(e) {
+      let raw = this.value.replace(/\D/g, '');
+      if(raw.length > 11) raw = raw.slice(0,11);
+      let formatted = '';
+      if(raw.length > 0) formatted = '+7 ';
+      if(raw.length > 1) formatted += '(' + raw.slice(1,4);
+      if(raw.length >= 5) formatted += ') ' + raw.slice(4,7);
+      if(raw.length >= 8) formatted += '-' + raw.slice(7,9);
+      if(raw.length >= 10) formatted += '-' + raw.slice(9,11);
+      this.value = formatted;
+      // проверка на количество цифр
+      if(raw.length === 11) this.classList.add('valid');
+      else this.classList.remove('valid');
+    });
+  }
+
+  // Маска карты: авто-пробелы
+  const cardInput = document.getElementById('cardNumber');
+  if(cardInput) {
+    cardInput.addEventListener('input', function(e) {
+      let val = this.value.replace(/\s/g, '').replace(/\D/g, '');
+      if(val.length > 16) val = val.slice(0,16);
+      let formatted = '';
+      for(let i=0; i<val.length; i++) {
+        if(i>0 && i%4===0) formatted += ' ';
+        formatted += val[i];
+      }
+      this.value = formatted;
+      if(val.length===16) this.classList.add('valid'); else this.classList.remove('valid');
+    });
+  }
+  // Expiry mask MM/YY
+  const expiry = document.getElementById('expiry');
+  if(expiry) {
+    expiry.addEventListener('input', function(e) {
+      let val = this.value.replace(/\D/g, '');
+      if(val.length >= 2) {
+        let month = val.slice(0,2);
+        if(parseInt(month)>12) month = '12';
+        let year = val.slice(2,4);
+        this.value = month + (year.length ? '/' + year : '');
+      } else this.value = val;
+      if(val.length===4) this.classList.add('valid'); else this.classList.remove('valid');
+    });
+  }
+  // cvv просто валидация
+  const cvvInput = document.getElementById('cvv');
+  if(cvvInput) {
+    cvvInput.addEventListener('input', () => {
+      if(cvvInput.value.length >= 3) cvvInput.classList.add('valid');
+      else cvvInput.classList.remove('valid');
+    });
+  }
+  // индекс
+  const zip = document.getElementById('zipcode');
+  if(zip) {
+    zip.addEventListener('input', () => {
+      zip.value = zip.value.replace(/\D/g, '').slice(0,6);
+      if(zip.value.length === 6) zip.classList.add('valid'); else zip.classList.remove('valid');
+    });
+  }
+
+  // ========== ВАЛИДАЦИЯ ПАРОЛЯ + сила ==========
+  const password = document.getElementById('password');
+  const confirmPwd = document.getElementById('confirmPwd');
+  const strengthFill = document.getElementById('strengthFill');
+  const strengthLabel = document.getElementById('strengthLabel');
+  const pwdMatchError = document.getElementById('pwdMatchError');
+
+  function checkStrength(pw) {
+    let score = 0;
+    if(pw.length >= 8) score++;
+    if(pw.match(/[a-z]/) && pw.match(/[A-Z]/)) score++;
+    if(pw.match(/[0-9]/)) score++;
+    if(pw.match(/[^a-zA-Z0-9]/)) score++;
+    let percent = (score / 4) * 100;
+    strengthFill.style.width = percent + '%';
+    if(score === 0) { strengthFill.style.background = '#ef4444'; strengthLabel.innerText = 'Очень слабый';}
+    else if(score === 1) { strengthFill.style.background = '#f97316'; strengthLabel.innerText = 'Слабый';}
+    else if(score === 2) { strengthFill.style.background = '#eab308'; strengthLabel.innerText = 'Средний';}
+    else if(score === 3) { strengthFill.style.background = '#3b82f6'; strengthLabel.innerText = 'Хороший';}
+    else { strengthFill.style.background = '#10b981'; strengthLabel.innerText = 'Надёжный';}
+    return score >= 2;
+  }
+  if(password) {
+    password.addEventListener('input', () => {
+      checkStrength(password.value);
+      if(confirmPwd.value) checkMatch();
+    });
+  }
+  function checkMatch() {
+    if(password.value !== confirmPwd.value && confirmPwd.value.length>0) {
+      pwdMatchError.style.display = 'flex';
+      confirmPwd.classList.add('error');
+    } else {
+      pwdMatchError.style.display = 'none';
+      confirmPwd.classList.remove('error');
+      if(confirmPwd.value && password.value === confirmPwd.value) confirmPwd.classList.add('valid');
+      else confirmPwd.classList.remove('valid');
+    }
+  }
+  if(confirmPwd) confirmPwd.addEventListener('input', checkMatch);
+
+  // функция уведомлений
+  function showToast(message, type = 'success') {
+    const toast = document.createElement('div');
+    toast.style.backgroundColor = type === 'success' ? '#10b981' : '#ef4444';
+    toast.style.color = 'white';
+    toast.style.padding = '12px 20px';
+    toast.style.borderRadius = '60px';
+    toast.style.fontSize = '0.85rem';
+    toast.style.fontWeight = '500';
+    toast.style.boxShadow = '0 8px 20px rgba(0,0,0,0.1)';
+    toast.style.marginBottom = '8px';
+    toast.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'}"></i> ${message}`;
+    document.getElementById('toastContainer').appendChild(toast);
+    setTimeout(() => toast.remove(), 3600);
+  }
+
+  // обработка регистрации
+  document.getElementById('registerForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let last = document.getElementById('lastname').value.trim();
+    let first = document.getElementById('firstname').value.trim();
+    let email = document.getElementById('email').value.trim();
+    let city = document.getElementById('city').value;
+    let consent = document.getElementById('consent').checked;
+    if(!last || !first) { showToast('Введите имя и фамилию', 'error'); return; }
+    if(!email.includes('@')) { showToast('Введите корректный email', 'error'); return; }
+    if(password.value.length < 6) { showToast('Пароль минимум 6 символов', 'error'); return; }
+    if(password.value !== confirmPwd.value) { showToast('Пароли не совпадают', 'error'); return; }
+    if(!consent) { showToast('Подтвердите согласие на обработку данных', 'error'); return; }
+    showToast(`Аккаунт для ${first} ${last} создан! Данные сохранены.`, 'success');
+    // имитация состояния полей success
+  });
+
+  // доставка и оплата
+  document.getElementById('deliveryForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let address = document.getElementById('address').value.trim();
+    let zipcode = document.getElementById('zipcode').value;
+    let cardNum = document.getElementById('cardNumber').value.replace(/\s/g, '');
+    let cvv = document.getElementById('cvv').value;
+    if(!address) { showToast('Укажите адрес доставки', 'error'); return; }
+    if(zipcode.length !== 6) { showToast('Индекс должен содержать 6 цифр', 'error'); return; }
+    if(cardNum.length !== 16) { showToast('Введите корректный номер карты (16 цифр)', 'error'); return; }
+    if(cvv.length < 3) { showToast('CVV код обязателен', 'error'); return; }
+    showToast('Заказ успешно оформлен! Способ доставки и оплата приняты.', 'success');
+  });
+
+  // отзыв
+  document.getElementById('reviewForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let rating = document.getElementById('rating').value;
+    let reviewText = document.getElementById('reviewText').value.trim();
+    if(!reviewText) { showToast('Напишите текст отзыва', 'error'); return; }
+    showToast(`Спасибо! Ваш отзыв с оценкой ${rating} звезд опубликован. Начислено 100 бонусов!`, 'success');
+  });
+
+  // Промокод имитация
+  document.getElementById('applyPromo')?.addEventListener('click', () => {
+    let promo = document.getElementById('promocode').value;
+    if(promo === 'BOAR10') showToast('Промокод принят! Скидка 10% на заказ', 'success');
+    else showToast('Неверный промокод', 'error');
+  });
+
+  //  Дополнительно показываем состояния ошибок у некоторых полей, 
+  //  в фокусе и тд уже заложено стилями, можно добавить пример error для демонстрации 
+  //  сделаем несколько полей с валидацией инлайн (телефон, индекс)
+  const phoneDemo = document.getElementById('phone');
+  if(phoneDemo) phoneDemo.addEventListener('blur', () => {
+    let digits = phoneDemo.value.replace(/\D/g,'');
+    if(digits.length !== 11) { phoneDemo.classList.add('error'); showToast('Номер телефона должен содержать 11 цифр', 'error');}
+    else phoneDemo.classList.remove('error');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты — Boar&Sanя</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/stule.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="logo"><span class="logo__boar">BOAR</span>&<span class="logo__sanya">SANя</span></a>
+            <div class="header__search"><input type="text" placeholder="Поиск..." class="search-input"><button class="search-btn">🔍</button></div>
+            <div class="header__contacts"><a href="tel:+78001234567" class="header__phone"><strong>8 (800) 123-45-67</strong></a><small class="header__callback">Обратный звонок</small></div>
+            <div class="header__icons"><a href="#" class="icon-link" title="Избранное">❤️<span class="badge">3</span></a><a href="#" class="icon-link" title="Сравнение">⚖️<span class="badge">2</span></a><a href="#" class="icon-link" title="Корзина" id="cartIcon">🛒<span class="badge" id="cartCount">0</span></a><a href="#" class="icon-link profile-icon" title="Войти">👤</a></div>
+            <button class="burger" id="burgerBtn">☰</button>
+        </div>
+        <nav class="nav" id="mainNav"><div class="container"><ul class="nav__list"><li class="nav__item nav__item--catalog"><a href="catalog.html">📦 Каталог</a></li><li class="nav__item"><a href="promo.html">🔥 Акции</a></li><li class="nav__item"><a href="blog.html">📝 Блог</a></li><li class="nav__item"><a href="contacts.html" class="active">🚚 Доставка</a></li><li class="nav__item"><a href="support.html">💬 Поддержка</a></li></ul></div></nav>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация"><div class="container"><a href="index.html">Главная</a> / <span>Контакты</span></div></nav>
+
+    <main>
+        <section class="contacts-page section">
+            <div class="container">
+                <h1 class="section__title section__title--page">📞 Контакты и доставка</h1>
+
+                <div class="contacts-grid">
+                    <aside class="contacts-info">
+                        <article class="contact-card"><span class="contact-card__icon">📞</span><div><h4>Телефон</h4><a href="tel:+78001234567"><strong>8 (800) 123-45-67</strong></a><p><small>Бесплатно по России</small></p></div></article>
+                        <article class="contact-card"><span class="contact-card__icon">📧</span><div><h4>Email</h4><a href="mailto:hello@boarsanya.ru"><strong>hello@boarsanya.ru</strong></a><p><small>Отвечаем в течение часа</small></p></div></article>
+                        <article class="contact-card"><span class="contact-card__icon">📍</span><div><h4>Адрес</h4><p><strong>г. Кострома, ул. Техническая, д. 42</strong></p><p><small>Пн–Вс: 10:00 – 21:00</small></p></div></article>
+                        <article class="contact-card"><span class="contact-card__icon">💬</span><div><h4>Мессенджеры</h4><p><strong>WhatsApp | Telegram</strong></p><p><small>Саня всегда на связи!</small></p></div></article>
+                    </aside>
+
+                    <section class="contacts-form" aria-label="Форма связи">
+                        <h3>Напишите нам</h3>
+                        <form><input type="text" placeholder="Ваше имя" required><input type="text" placeholder="Телефон или email" required><textarea placeholder="Сообщение..." rows="5"></textarea><button type="submit" class="btn btn--primary btn--full">Отправить</button></form>
+                    </section>
+                </div>
+
+                <hr class="section__divider">
+
+                <!-- ДОСТАВКА -->
+                <h2 class="section__title">🚚 Доставка и оплата</h2>
+                <div class="delivery-grid">
+                    <article class="delivery-card"><span class="delivery-card__icon">🚗</span><h4>Курьерская доставка</h4><p><small>По Костроме — от 1 дня</small></p><p><small>По России — <strong>2–5 дней</strong></small></p><p class="delivery-card__price">от <strong>290 ₽</strong></p></article>
+                    <article class="delivery-card"><span class="delivery-card__icon">📦</span><h4>Самовывоз</h4><p><small>5 пунктов в Костроме</small></p><p><small>Сегодня при заказе до 18:00</small></p><p class="delivery-card__price"><mark>Бесплатно</mark></p></article>
+                    <article class="delivery-card"><span class="delivery-card__icon">🚛</span><h4>СДЭК / Почта</h4><p><small>Доставка по всей РФ</small></p><p><small>Отслеживание трек-номера</small></p><p class="delivery-card__price">от <strong>350 ₽</strong></p></article>
+                </div>
+
+                <div class="payment-methods">
+                    <h3>💳 Способы оплаты</h3>
+                    <p><span>💳 Картой онлайн</span> <span>💵 Наличными</span> <span>🏢 Безнал</span> <span>📱 СБП / SberPay</span></p>
+                </div>
+
+                <hr class="section__divider">
+
+                <!-- ГАРАНТИЯ -->
+                <h2 class="section__title">🛡️ Гарантия и возврат</h2>
+                <div class="warranty-content">
+                    <ul>
+                        <li>✅ <strong>Официальная гарантия</strong> производителя — <strong>1 год</strong></li>
+                        <li>✅ Возврат товара в течение <strong>14 дней</strong> без объяснения причин</li>
+                        <li>✅ Обмен при обнаружении брака — <em>в день обращения</em></li>
+                        <li>✅ Собственный сервисный центр в Костроме</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer"><div class="container footer__inner"><div class="footer__col"><a href="index.html" class="logo logo--footer"><span class="logo__boar">BOAR</span>&<span class="logo__sanya">SANя</span></a></div></div><div class="footer__bottom"><div class="container"><p><small>© 2026 Boar&Sanя</small></p></div></div></footer>
+
+    <!-- МОДАЛЬНЫЕ ОКНА -->
+    <div class="modal" id="cartModal"><div class="modal__overlay"></div><div class="modal__content"><button class="modal__close">✕</button><h3>🛒 Корзина</h3><div class="cart-items" id="cartItems"></div></div></div>
+    <div class="modal" id="compareModal"><div class="modal__overlay"></div><div class="modal__content modal__content--wide"><button class="modal__close">✕</button><h3>⚖️ Сравнение</h3><div id="compareItems"></div></div></div>
+    <div class="modal" id="favoritesModal"><div class="modal__overlay"></div><div class="modal__content"><button class="modal__close">✕</button><h3>❤️ Избранное</h3><div id="favoritesItems"></div></div></div>
+    <div class="modal" id="profileModal"><div class="modal__overlay"></div><div class="modal__content"><button class="modal__close">✕</button><h3>👤 Личный кабинет</h3><div id="profileContent"></div></div></div>
+    <div class="modal" id="checkoutModal"><div class="modal__overlay"></div><div class="modal__content modal__content--wide"><button class="modal__close">✕</button><h3>📋 Оформление заказа</h3></div></div>
+    <div class="modal" id="orderSuccessModal"><div class="modal__overlay"></div><div class="modal__content"><button class="modal__close">✕</button><div id="orderDetails"></div></div></div>
+
+    <div class="chat-widget" id="chatWindow"><div class="chat-header"><span>💬 Саня на связи</span><button class="chat-close" id="chatClose">✕</button></div><div class="chat-body" id="chatBody"></div><div class="chat-input-area"><input type="text" id="chatInput"><button id="chatSend">➤</button></div></div>
+    <button class="chat-toggle" id="chatToggle" title="Чат с Саней">💬</button>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

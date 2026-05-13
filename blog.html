@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог — Boar&Sanя</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/stule.css">
+</head>
+<body>
+    <!-- СЕМАНТИЧЕСКАЯ ШАПКА -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="logo">
+                <span class="logo__boar">BOAR</span>&<span class="logo__sanya">SANя</span>
+            </a>
+            <div class="header__search">
+                <input type="text" placeholder="Поиск по блогу..." class="search-input">
+                <button class="search-btn">🔍</button>
+            </div>
+            <div class="header__contacts">
+                <a href="tel:+78001234567" class="header__phone"><strong>8 (800) 123-45-67</strong></a>
+                <small class="header__callback">Обратный звонок</small>
+            </div>
+            <div class="header__icons">
+                <a href="#" class="icon-link" title="Избранное">❤️<span class="badge">3</span></a>
+                <a href="#" class="icon-link" title="Сравнение">⚖️<span class="badge">2</span></a>
+                <a href="#" class="icon-link" title="Корзина" id="cartIcon">🛒<span class="badge" id="cartCount">0</span></a>
+                <a href="#" class="icon-link profile-icon" title="Войти">👤</a>
+            </div>
+            <button class="burger" id="burgerBtn">☰</button>
+        </div>
+        
+        <nav class="nav" id="mainNav">
+            <div class="container">
+                <ul class="nav__list">
+                    <li class="nav__item nav__item--catalog">
+                        <a href="catalog.html">📦 Каталог</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu__col"><h4>Смартфоны</h4><a href="#">iPhone</a><a href="#">Samsung</a><a href="#">Xiaomi</a></div>
+                            <div class="mega-menu__col"><h4>Ноутбуки</h4><a href="#">Игровые</a><a href="#">Ультрабуки</a></div>
+                            <div class="mega-menu__col"><h4>Бытовая техника</h4><a href="#">Крупная</a><a href="#">Мелкая</a></div>
+                            <div class="mega-menu__col"><h4>Аксессуары</h4><a href="#">Наушники</a><a href="#">Зарядки</a></div>
+                        </div>
+                    </li>
+                    <li class="nav__item"><a href="promo.html">🔥 Акции</a></li>
+                    <li class="nav__item"><a href="blog.html" class="active">📝 Блог</a></li>
+                    <li class="nav__item"><a href="contacts.html">🚚 Доставка</a></li>
+                    <li class="nav__item"><a href="contacts.html">📞 Контакты</a></li>
+                    <li class="nav__item"><a href="support.html">💬 Поддержка</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ХЛЕБНЫЕ КРОШКИ -->
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container">
+            <a href="index.html">Главная</a> / <span>Блог</span>
+        </div>
+    </nav>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main>
+        <section class="blog-page section" aria-label="Блог">
+            <div class="container">
+                <h1 class="section__title section__title--page">📝 Блог: <em>Кабанчик советует</em></h1>
+                <p class="section__subtitle"><small>Обзоры, советы по выбору, новинки и лайфхаки</small></p>
+
+                <!-- КАТЕГОРИИ БЛОГА -->
+                <nav class="blog-categories" aria-label="Категории блога">
+                    <button class="blog-cat-btn active">Все статьи</button>
+                    <button class="blog-cat-btn">📱 Смартфоны</button>
+                    <button class="blog-cat-btn">💻 Ноутбуки</button>
+                    <button class="blog-cat-btn">📺 Техника для дома</button>
+                    <button class="blog-cat-btn">🎮 Гейминг</button>
+                    <button class="blog-cat-btn">🔌 Аксессуары</button>
+                </nav>
+
+                <!-- СЕТКА СТАТЕЙ -->
+                <div class="blog-grid">
+                    <!-- СТАТЬЯ 1 -->
+                    <article class="blog-card blog-card--full">
+                        <div class="blog-card__img blog-card__img--large" aria-hidden="true">📱</div>
+                        <div class="blog-card__body">
+                            <mark class="blog-card__cat">Смартфоны</mark>
+                            <small class="blog-card__date">25 апреля 2026</small>
+                            <h3>Как выбрать смартфон в 2026 году: <strong>5 главных правил</strong></h3>
+                            <p>Разбираем ключевые характеристики, на которые стоит обратить внимание при выборе телефона. <em>Процессор, камера, экран, батарея</em> — что реально важно, а что маркетинг?</p>
+                            <div class="blog-card__footer">
+                                <span>👁 <strong>2.4K</strong> просмотров</span>
+                                <span>💬 <strong>56</strong> комментариев</span>
+                                <a href="#" class="btn btn--text">Читать полностью →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- СТАТЬЯ 2 -->
+                    <article class="blog-card blog-card--full">
+                        <div class="blog-card__img blog-card__img--large" aria-hidden="true">💻</div>
+                        <div class="blog-card__body">
+                            <mark class="blog-card__cat">Ноутбуки</mark>
+                            <small class="blog-card__date">23 апреля 2026</small>
+                            <h3>Игровой или ультрабук? <em>Сравниваем и выбираем</em> лучший ноутбук</h3>
+                            <p>Поможем определиться с ноутбуком под ваши задачи и бюджет: сравниваем <strong>производительность, вес, автономность</strong> и цены.</p>
+                            <div class="blog-card__footer">
+                                <span>👁 <strong>1.8K</strong> просмотров</span>
+                                <span>💬 <strong>34</strong> комментария</span>
+                                <a href="#" class="btn btn--text">Читать полностью →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- СТАТЬЯ 3 -->
+                    <article class="blog-card blog-card--full">
+                        <div class="blog-card__img blog-card__img--large" aria-hidden="true">🧹</div>
+                        <div class="blog-card__body">
+                            <mark class="blog-card__cat">Техника для дома</mark>
+                            <small class="blog-card__date">20 апреля 2026</small>
+                            <h3>Робот-пылесос: <strong>мифы и реальность</strong>. Стоит ли покупать?</h3>
+                            <p>Правда ли робот заменит обычный пылесос? <em>Тест-драйв 5 популярных моделей</em> с влажной уборкой и навигацией.</p>
+                            <div class="blog-card__footer">
+                                <span>👁 <strong>3.1K</strong> просмотров</span>
+                                <span>💬 <strong>89</strong> комментариев</span>
+                                <a href="#" class="btn btn--text">Читать полностью →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- СТАТЬЯ 4 С ВИДЕО -->
+                    <article class="blog-card blog-card--full blog-card--featured">
+                        <div class="blog-card__img blog-card__img--large blog-card__video">
+                            <iframe 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="Видеообзор: как выбрать технику в 2026 году"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy"
+                            ></iframe>
+                        </div>
+                        <div class="blog-card__body">
+                            <mark class="blog-card__cat" style="background:var(--red);color:var(--white);">🎥 ВИДЕО</mark>
+                            <small class="blog-card__date">18 апреля 2026</small>
+                            <h3>📺 <strong>Видеообзор:</strong> ТОП-10 гаджетов 2026 года</h3>
+                            <p><em>Саня и Кабанчик</em> тестируют новинки этого года. Смотрим, сравниваем, выбираем лучшее!</p>
+                            <p><small>Источник: YouTube-канал Boar&Sanя</small></p>
+                            <div class="blog-card__footer">
+                                <span>👁 <strong>15.7K</strong> просмотров</span>
+                                <span>💬 <strong>342</strong> комментария</span>
+                                <span>⏱ <strong>12:34</strong></span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- СТАТЬЯ 5 -->
+                    <article class="blog-card blog-card--full">
+                        <div class="blog-card__img blog-card__img--large" aria-hidden="true">🎧</div>
+                        <div class="blog-card__body">
+                            <mark class="blog-card__cat">Аксессуары</mark>
+                            <small class="blog-card__date">15 апреля 2026</small>
+                            <h3>ТОП-10 наушников 2026: <em>от бюджетных до флагманов</em></h3>
+                            <p>Собрали лучшие TWS-наушники в разных ценовых категориях. Сравниваем <strong>звук, шумоподавление и автономность</strong>.</p>
+                            <div class="blog-card__footer">
+                                <span>👁 <strong>4.2K</strong> просмотров</span>
+                                <span>💬 <strong>112</strong> комментариев</span>
+                                <a href="#" class="btn btn--text">Читать полностью →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- СТАТЬЯ 6 -->
+                    <article class="blog-card blog-card--full">
+                        <div class="blog-card__img blog-card__img--large" aria-hidden="true">🎮</div>
+                        <div class="blog-card__body">
+                            <mark class="blog-card__cat">Гейминг</mark>
+                            <small class="blog-card__date">12 апреля 2026</small>
+                            <h3>Игровые приставки 2026: <strong>PS5 Pro vs Xbox Series X2</strong></h3>
+                            <p>Сравниваем новое поколение консолей: <em>графика, игры, подписки и цены</em>. Что выбрать?</p>
+                            <div class="blog-card__footer">
+                                <span>👁 <strong>5.7K</strong> просмотров</span>
+                                <span>💬 <strong>203</strong> комментария</span>
+                                <a href="#" class="btn btn--text">Читать полностью →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- ПАГИНАЦИЯ -->
+                <nav class="pagination" aria-label="Пагинация блога">
+                    <a href="#" class="pagination__btn active">1</a>
+                    <a href="#" class="pagination__btn">2</a>
+                    <a href="#" class="pagination__btn">3</a>
+                    <a href="#" class="pagination__btn" aria-label="Следующая страница">→</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <!-- СЕМАНТИЧЕСКИЙ ПОДВАЛ -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__col">
+                <a href="index.html" class="logo logo--footer"><span class="logo__boar">BOAR</span>&<span class="logo__sanya">SANя</span></a>
+                <p><small>Техника, которая работает на вас.</small></p>
+                <div class="socials"><a href="#" aria-label="VK">VK</a><a href="#" aria-label="TG">TG</a><a href="#" aria-label="YT">YT</a></div>
+            </div>
+            <nav class="footer__col"><h4>Покупателям</h4><a href="catalog.html">Каталог</a><a href="promo.html">Акции</a><a href="contacts.html">Доставка</a></nav>
+            <nav class="footer__col"><h4>О компании</h4><a href="contacts.html">Контакты</a><a href="blog.html">Блог</a><a href="support.html">Поддержка</a></nav>
+            <div class="footer__col"><h4>Контакты</h4><p><strong>📞 8 (800) 123-45-67</strong></p><p><small>📧 hello@boarsanya.ru</small></p></div>
+        </div>
+        <div class="footer__bottom"><div class="container"><p><small>© 2026 Boar&Sanя</small></p></div></div>
+    </footer>
+
+    <!-- МОДАЛЬНЫЕ ОКНА -->
+    <div class="modal" id="cartModal"><div class="modal__overlay"></div><div class="modal__content"><button class="modal__close">✕</button><h3>🛒 Корзина</h3><div class="cart-items" id="cartItems"></div><div class="promocode-cart"><input type="text" placeholder="Промокод" id="promocodeInput"><button class="btn btn--outline btn-sm" id="applyPromoBtn">Применить</button></div><div class="cart-summary"><div class="cart-summary__row"><span>Сумма:</span><strong id="cartTotal">0 ₽</strong></div><div class="cart-summary__row" style="color:var(--green);"><span>Скидка:</span><strong id="cartDiscount">0 ₽</strong></div><div class="cart-summary__row cart-summary__row--total"><span>Итого:</span><strong id="cartFinal">0 ₽</strong></div></div><button class="btn btn--primary btn--full" style="margin-top:12px;">Оформить заказ</button></div></div>
+    <div class="modal" id="compareModal"><div class="modal__overlay"></div><div class="modal__content modal__content--wide"><button class="modal__close">✕</button><h3>⚖️ Сравнение</h3><div id="compareItems"></div></div></div>
+    <div class="modal" id="favoritesModal"><div class="modal__overlay"></div><div class="modal__content"><button class="modal__close">✕</button><h3>❤️ Избранное</h3><div id="favoritesItems"></div></div></div>
+    <div class="modal" id="profileModal"><div class="modal__overlay"></div><div class="modal__content"><button class="modal__close">✕</button><h3>👤 Личный кабинет</h3><div id="profileContent"></div></div></div>
+    <div class="modal" id="checkoutModal"><div class="modal__overlay"></div><div class="modal__content modal__content--wide"><button class="modal__close">✕</button><h3>📋 Оформление заказа</h3><div class="checkout-layout"><div class="checkout-items" id="checkoutItems"></div></div></div></div>
+    <div class="modal" id="orderSuccessModal"><div class="modal__overlay"></div><div class="modal__content"><button class="modal__close">✕</button><div id="orderDetails"></div></div></div>
+
+    <!-- ЧАТ -->
+    <div class="chat-widget" id="chatWindow"><div class="chat-header"><span>💬 Саня на связи</span><button class="chat-close" id="chatClose">✕</button></div><div class="chat-body" id="chatBody"><div class="chat-message chat-message--bot"><div class="chat-message__bubble">👋 Привет! Я Саня.</div></div></div><div class="chat-input-area"><input type="text" placeholder="Напишите сообщение..." id="chatInput"><button id="chatSend">➤</button></div></div>
+    <button class="chat-toggle" id="chatToggle" title="Чат с Саней">💬</button>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

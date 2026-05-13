@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boar&Sanя — Техника, которая работает на вас</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/stule.css">
+</head>
+<body>
+    <!-- СЕМАНТИЧЕСКАЯ ШАПКА -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="logo">
+                <span class="logo__boar">BOAR</span>&<span class="logo__sanya">SANя</span>
+            </a>
+            <div class="header__search">
+                <input type="text" placeholder="Поиск товаров..." class="search-input">
+                <button class="search-btn">🔍</button>
+            </div>
+            <div class="header__contacts">
+                <a href="tel:+78001234567" class="header__phone"><strong>8 (800) 123-45-67</strong></a>
+                <small class="header__callback">Обратный звонок</small>
+            </div>
+            <div class="header__icons">
+                <a href="#" class="icon-link" title="Избранное">❤️<span class="badge">3</span></a>
+                <a href="#" class="icon-link" title="Сравнение">⚖️<span class="badge">2</span></a>
+                <a href="#" class="icon-link" title="Корзина" id="cartIcon">🛒<span class="badge" id="cartCount">0</span></a>
+                <a href="#" class="icon-link profile-icon" title="Войти">👤</a>
+            </div>
+            <button class="burger" id="burgerBtn">☰</button>
+        </div>
+        
+        <!-- СЕМАНТИЧЕСКАЯ НАВИГАЦИЯ -->
+        <nav class="nav" id="mainNav">
+            <div class="container">
+                <ul class="nav__list">
+                    <li class="nav__item nav__item--catalog">
+                        <a href="catalog.html">📦 Каталог</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu__col">
+                                <h4>Смартфоны</h4>
+                                <a href="#">iPhone</a><a href="#">Samsung</a><a href="#">Xiaomi</a><a href="#">Realme</a>
+                            </div>
+                            <div class="mega-menu__col">
+                                <h4>Ноутбуки</h4>
+                                <a href="#">Игровые</a><a href="#">Ультрабуки</a><a href="#">Для работы</a>
+                            </div>
+                            <div class="mega-menu__col">
+                                <h4>Бытовая техника</h4>
+                                <a href="#">Крупная</a><a href="#">Мелкая</a><a href="#">Климат</a>
+                            </div>
+                            <div class="mega-menu__col">
+                                <h4>Аксессуары</h4>
+                                <a href="#">Наушники</a><a href="#">Зарядки</a><a href="#">Чехлы</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item"><a href="promo.html">🔥 Акции</a></li>
+                    <li class="nav__item"><a href="blog.html">📝 Блог</a></li>
+                    <li class="nav__item"><a href="contacts.html">🚚 Доставка</a></li>
+                    <li class="nav__item"><a href="contacts.html">📞 Контакты</a></li>
+                    <li class="nav__item"><a href="support.html">💬 Поддержка</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- СЕМАНТИЧЕСКАЯ СЕКЦИЯ: СЛАЙДЕР -->
+    <section class="hero" aria-label="Промо-акции">
+        <div class="container">
+            <div class="slider" id="heroSlider">
+                <article class="slide active">
+                    <div class="slide__content">
+                        <mark class="slide__tag">НОВИНКА</mark>
+                        <h2>iPhone 15 Pro — мощь в каждом кадре</h2>
+                        <p>Титановый корпус, <strong>A17 Pro</strong>, камера <em>48 МП</em>. Рассрочка 0%</p>
+                        <a href="product.html?id=1" class="btn btn--primary">Смотреть →</a>
+                    </div>
+                    <div class="slide__img" aria-hidden="true">📱</div>
+                </article>
+                <article class="slide">
+                    <div class="slide__content">
+                        <mark class="slide__tag">АКЦИЯ</mark>
+                        <h2>Ноутбуки ASUS — <em>скидки до 25%</em></h2>
+                        <p>Игровые и ультрабуки по <strong>выгодным ценам</strong></p>
+                        <a href="catalog.html" class="btn btn--primary">В каталог →</a>
+                    </div>
+                    <div class="slide__img" aria-hidden="true">💻</div>
+                </article>
+                <article class="slide">
+                    <div class="slide__content">
+                        <mark class="slide__tag">ХИТ</mark>
+                        <h2>Роботы-пылесосы — чистота без усилий</h2>
+                        <p>С влажной уборкой и навигацией <strong>LiDAR</strong></p>
+                        <a href="catalog.html" class="btn btn--primary">Выбрать →</a>
+                    </div>
+                    <div class="slide__img" aria-hidden="true">🧹</div>
+                </article>
+                <div class="slider__dots" id="sliderDots"></div>
+                <button class="slider__arrow slider__arrow--prev" aria-label="Предыдущий слайд">◀</button>
+                <button class="slider__arrow slider__arrow--next" aria-label="Следующий слайд">▶</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕМАНТИЧЕСКАЯ СЕКЦИЯ: КАТЕГОРИИ -->
+    <section class="categories section" aria-label="Популярные категории">
+        <div class="container">
+            <h2 class="section__title">Популярные категории</h2>
+            <div class="categories__grid">
+                <a href="catalog.html" class="cat-card">📱<span>Смартфоны</span></a>
+                <a href="catalog.html" class="cat-card">💻<span>Ноутбуки</span></a>
+                <a href="catalog.html" class="cat-card">📺<span>Телевизоры</span></a>
+                <a href="catalog.html" class="cat-card">🎧<span>Наушники</span></a>
+                <a href="catalog.html" class="cat-card">⌚<span>Часы</span></a>
+                <a href="catalog.html" class="cat-card">🧹<span>Пылесосы</span></a>
+                <a href="catalog.html" class="cat-card">🎮<span>Приставки</span></a>
+                <a href="catalog.html" class="cat-card">🔌<span>Аксессуары</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕМАНТИЧЕСКАЯ СЕКЦИЯ: ХИТЫ ПРОДАЖ -->
+    <section class="products section section--gray" aria-label="Хиты продаж">
+        <div class="container">
+            <h2 class="section__title">🔥 Хиты продаж</h2>
+            <p><small>Лучшие товары по версии наших покупателей</small></p>
+            <div class="products__grid" id="hitProducts"></div>
+        </div>
+    </section>
+
+    <!-- СЕМАНТИЧЕСКАЯ СЕКЦИЯ: ПРЕИМУЩЕСТВА -->
+    <section class="advantages section" aria-label="Наши преимущества">
+        <div class="container">
+            <div class="advantages__grid">
+                <article class="adv-card">
+                    <span class="adv-card__icon">🚚</span>
+                    <h4>Быстрая доставка</h4>
+                    <p><strong>2–5 дней</strong> по всей России. <small>Курьером или в пункт выдачи</small></p>
+                </article>
+                <article class="adv-card">
+                    <span class="adv-card__icon">🛡️</span>
+                    <h4>Гарантия <em>1 год</em></h4>
+                    <p><strong>Официальная гарантия</strong> производителя на всю технику</p>
+                </article>
+                <article class="adv-card">
+                    <span class="adv-card__icon">💬</span>
+                    <h4>Поддержка <mark>24/7</mark></h4>
+                    <p>Саня всегда на связи! <small>Чат, звонок, Telegram</small></p>
+                </article>
+                <article class="adv-card">
+                    <span class="adv-card__icon">🔄</span>
+                    <h4>Возврат без проблем</h4>
+                    <p><strong>14 дней</strong> на возврат товара <small>без объяснения причин</small></p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕМАНТИЧЕСКАЯ СЕКЦИЯ: БЛОГ -->
+    <section class="blog-preview section" aria-label="Последние статьи блога">
+        <div class="container">
+            <h2 class="section__title">📝 Кабанчик советует</h2>
+            <div class="blog-preview__grid">
+                <article class="blog-card">
+                    <div class="blog-card__img" aria-hidden="true">📱</div>
+                    <small class="blog-card__date">25.04.2026</small>
+                    <h4>Как выбрать смартфон в 2026: <mark>5 главных правил</mark></h4>
+                    <p>Разбираем ключевые характеристики, на которые стоит обратить внимание...</p>
+                    <a href="blog.html" class="btn btn--text">Читать →</a>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-card__img" aria-hidden="true">💻</div>
+                    <small class="blog-card__date">23.04.2026</small>
+                    <h4>Игровой или ультрабук? <em>Сравниваем и выбираем</em></h4>
+                    <p>Поможем определиться с ноутбуком под ваши задачи и бюджет...</p>
+                    <a href="blog.html" class="btn btn--text">Читать →</a>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-card__img" aria-hidden="true">🧹</div>
+                    <small class="blog-card__date">20.04.2026</small>
+                    <h4>Робот-пылесос: <strong>мифы и реальность</strong></h4>
+                    <p>Правда ли робот заменит обычный пылесос? Тест-драйв...</p>
+                    <a href="blog.html" class="btn btn--text">Читать →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕМАНТИЧЕСКИЙ ПОДВАЛ -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__col">
+                <a href="index.html" class="logo logo--footer">
+                    <span class="logo__boar">BOAR</span>&<span class="logo__sanya">SANя</span>
+                </a>
+                <p><small>Техника, которая работает на вас. Без переплат и диких цен.</small></p>
+                <div class="socials">
+                    <a href="#" aria-label="ВКонтакте">VK</a>
+                    <a href="#" aria-label="Telegram">TG</a>
+                    <a href="#" aria-label="YouTube">YT</a>
+                </div>
+            </div>
+            <nav class="footer__col" aria-label="Покупателям">
+                <h4>Покупателям</h4>
+                <a href="catalog.html">Каталог</a>
+                <a href="promo.html">Акции</a>
+                <a href="contacts.html">Доставка и оплата</a>
+                <a href="contacts.html">Гарантия и возврат</a>
+            </nav>
+            <nav class="footer__col" aria-label="О компании">
+                <h4>О компании</h4>
+                <a href="contacts.html">Контакты</a>
+                <a href="blog.html">Блог</a>
+                <a href="#">О нас</a>
+                <a href="#">Политика конфиденциальности</a>
+            </nav>
+            <div class="footer__col">
+                <h4>Контакты</h4>
+                <p><strong>📞 8 (800) 123-45-67</strong></p>
+                <p><small>📧 hello@boarsanya.ru</small></p>
+                <p><small>📍 г. Кострома, ул. Техническая, д. 42</small></p>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="container">
+                <p><small>© 2026 Boar&Sanя. Все права защищены.</small></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- МОДАЛЬНЫЕ ОКНА -->
+    <div class="modal" id="cartModal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <button class="modal__close">✕</button>
+            <h3>🛒 Корзина</h3>
+            <div class="cart-items" id="cartItems"></div>
+            <div class="promocode-cart">
+                <input type="text" placeholder="Промокод" id="promocodeInput">
+                <button class="btn btn--outline btn-sm" id="applyPromoBtn">Применить</button>
+            </div>
+            <div class="cart-summary">
+                <div class="cart-summary__row"><span>Сумма:</span><strong id="cartTotal">0 ₽</strong></div>
+                <div class="cart-summary__row" style="color:var(--green);"><span>Скидка:</span><strong id="cartDiscount">0 ₽</strong></div>
+                <div class="cart-summary__row cart-summary__row--total"><span>Итого:</span><strong id="cartFinal">0 ₽</strong></div>
+            </div>
+            <button class="btn btn--primary btn--full" style="margin-top:12px;">Оформить заказ</button>
+        </div>
+    </div>
+
+    <div class="modal" id="compareModal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content modal__content--wide">
+            <button class="modal__close">✕</button>
+            <h3>⚖️ Сравнение товаров</h3>
+            <div id="compareItems"></div>
+            <button class="btn btn--text" onclick="compare = []; saveCompare(); updateCompareUI(); closeModal('compareModal');" style="margin-top:12px;">Очистить сравнение</button>
+        </div>
+    </div>
+
+    <div class="modal" id="favoritesModal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <button class="modal__close">✕</button>
+            <h3>❤️ Избранное</h3>
+            <div id="favoritesItems"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="profileModal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <button class="modal__close">✕</button>
+            <h3>👤 Личный кабинет</h3>
+            <div id="profileContent"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="checkoutModal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content modal__content--wide">
+            <button class="modal__close">✕</button>
+            <h3>📋 Оформление заказа</h3>
+            <div class="checkout-layout">
+                <div class="checkout-items" id="checkoutItems"></div>
+                <form id="checkoutForm" class="checkout-form">
+                    <h4>👤 Контактные данные</h4>
+                    <input type="text" name="name" placeholder="ФИО *" required>
+                    <input type="tel" name="phone" placeholder="Телефон *" required>
+                    <input type="email" name="email" placeholder="Email">
+                    <h4>🚚 Доставка</h4>
+                    <select name="delivery">
+                        <option>Курьер — от 290 ₽</option>
+                        <option>Самовывоз — бесплатно</option>
+                        <option>СДЭК / Почта — от 350 ₽</option>
+                    </select>
+                    <h4>💳 Оплата</h4>
+                    <select name="payment">
+                        <option>Онлайн картой</option>
+                        <option>Наличными при получении</option>
+                        <option>Безнал для юрлиц</option>
+                    </select>
+                    <textarea name="comment" placeholder="Комментарий к заказу"></textarea>
+                </form>
+            </div>
+            <div class="checkout-summary">
+                <div class="checkout-row"><span>Товары:</span><strong id="checkoutTotal">0 ₽</strong></div>
+                <div class="checkout-row" style="color:var(--green);"><span>Скидка:</span><strong id="checkoutDiscount">0 ₽</strong></div>
+                <div class="checkout-row checkout-row--total"><span>Итого к оплате:</span><strong id="checkoutFinal">0 ₽</strong></div>
+            </div>
+            <button type="button" class="btn btn--primary btn--large btn--full" onclick="placeOrder()" style="margin-top:16px;">✅ Подтвердить заказ</button>
+            <p><small>Нажимая «Подтвердить», вы соглашаетесь с условиями доставки</small></p>
+        </div>
+    </div>
+
+    <div class="modal" id="orderSuccessModal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <button class="modal__close">✕</button>
+            <div id="orderDetails"></div>
+            <a href="index.html" class="btn btn--primary btn--full" style="margin-top:12px;">🏠 На главную</a>
+        </div>
+    </div>
+
+    <!-- ЧАТ -->
+    <div class="chat-widget" id="chatWindow">
+        <div class="chat-header"><span>💬 Саня на связи</span><button class="chat-close" id="chatClose">✕</button></div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-message chat-message--bot"><div class="chat-message__bubble">👋 Привет! Я Саня. Чем могу помочь?</div></div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" placeholder="Напишите сообщение..." id="chatInput">
+            <button id="chatSend">➤</button>
+        </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle" title="Чат с Саней">💬</button>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
